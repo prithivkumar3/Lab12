@@ -58,7 +58,10 @@ public final class MainActivity extends AppCompatActivity {
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
-        findViewById(R.id.check).setVisibility(View.GONE);
+        TextView check = findViewById(R.id.check);
+        String invalid = "Please Enter a Valid Bender Type.";
+        check.setText(invalid);
+        check.setVisibility(View.GONE);
         final TextInputEditText inputName = findViewById(R.id.inputName);
         final TextInputEditText inputType = findViewById(R.id.inputType);
         final Button startGame = findViewById(R.id.start);
