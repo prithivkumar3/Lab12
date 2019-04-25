@@ -181,7 +181,6 @@ public final class MainActivity extends AppCompatActivity {
         } else {
             display.setText(lost);
         }
-        setContentView(R.layout.login);
     }
 
     /*/**
