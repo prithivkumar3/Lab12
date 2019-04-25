@@ -9,7 +9,7 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.3.0'
+        classpath 'com.android.tools.build:gradle:3.4.0'
     }
 }
 allprojects {
@@ -18,15 +18,17 @@ allprojects {
         jcenter()
     }
 }
-task copyFiles << {
-    if (file('.idea').exists()) {
-        copy {
-            from '.preserve/inspectionProfiles'
-            into '.idea/inspectionProfiles'
-        }
-        copy {
-            from '.preserve/checkstyle-idea.xml'
-            into '.idea'
+task copyFiles {
+    doLast {
+        if (file('.idea').exists()) {
+            copy {
+                from '.preserve/inspectionProfiles'
+                into '.idea/inspectionProfiles'
+            }
+            copy {
+                from '.preserve/checkstyle-idea.xml'
+                into '.idea'
+            }
         }
     }
 }

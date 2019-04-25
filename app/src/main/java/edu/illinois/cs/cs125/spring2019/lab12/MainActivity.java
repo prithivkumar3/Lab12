@@ -92,7 +92,7 @@ public final class MainActivity extends AppCompatActivity {
         restart.setOnClickListener(v -> {
             //setContentView(R.layout.login);
             //findViewById(R.id.check).setVisibility(View.GONE);
-            finish();
+            //finish();
         });
         TextView playerName = findViewById(R.id.player);
         playerName.setText(player.getName());
