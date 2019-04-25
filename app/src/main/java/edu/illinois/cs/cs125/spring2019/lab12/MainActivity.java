@@ -57,6 +57,8 @@ public final class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Button restart = findViewById(R.id.restart);
+        restart.setOnClickListener(v -> setContentView(R.layout.login));
         setContentView(R.layout.login);
         TextView check = findViewById(R.id.check);
         String invalid = "Please Enter a Valid Bender Type.";
@@ -203,14 +205,6 @@ public final class MainActivity extends AppCompatActivity {
         } else {
             return;
         }
-        configureTitleButton();
-    }
-    /**
-     * return to title screen.
-     */
-    private void configureTitleButton() {
-        Button restart = findViewById(R.id.restart);
-        restart.setOnClickListener(v -> setContentView(R.layout.login));
     }
 
     /**
