@@ -210,7 +210,7 @@ public final class MainActivity extends AppCompatActivity {
      */
     private void configureTitleButton() {
         Button restart = findViewById(R.id.restart);
-        restart.setOnClickListener(v -> finish());
+        restart.setOnClickListener(v -> setContentView(R.layout.login));
     }
 
     /**
