@@ -57,8 +57,6 @@ public final class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Button restart = findViewById(R.id.restart);
-        restart.setOnClickListener(v -> setContentView(R.layout.login));
         setContentView(R.layout.login);
         TextView check = findViewById(R.id.check);
         String invalid = "Please Enter a Valid Bender Type.";
@@ -86,6 +84,8 @@ public final class MainActivity extends AppCompatActivity {
                 Random rand = new Random();
                 Bender opponent = new Bender(types[rand.nextInt(NUM_TYPES)], "Computer");
                 setContentView(R.layout.activity_main);
+                Button restart = findViewById(R.id.restart);
+                restart.setOnClickListener(v -> setContentView(R.layout.login));
                 TextView playerName = findViewById(R.id.player);
                 playerName.setText(player.getName());
                 TextView opponentName = findViewById(R.id.opponent);
