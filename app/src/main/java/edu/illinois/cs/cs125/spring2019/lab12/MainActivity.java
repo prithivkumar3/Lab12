@@ -90,8 +90,9 @@ public final class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         final Button restart = findViewById(R.id.start);
         restart.setOnClickListener(v -> {
-            setContentView(R.layout.activity_main);
-            findViewById(R.id.check).setVisibility(View.GONE);
+            //setContentView(R.layout.login);
+            //findViewById(R.id.check).setVisibility(View.GONE);
+            finish();
         });
         TextView playerName = findViewById(R.id.player);
         playerName.setText(player.getName());
@@ -135,52 +136,83 @@ public final class MainActivity extends AppCompatActivity {
         TextView oppHealth = findViewById(R.id.oppHealth);
         String oH = "Health: " + opponent.getHealth();
         oppHealth.setText(oH);
+        TextView display = findViewById(R.id.log);
         while (player.getHealth() > 0 && opponent.getHealth() > 0) {
             one.setOnClickListener(v -> {
-                Attack current = player.getAttacks()[0];
-                String whatIsHappening = "You used " + current.getName() + "!";
-                TextView display = findViewById(R.id.log);
-                display.setText(whatIsHappening);
-                opponent.setHealth(opponent.getHealth() - current.getDamage());
-                lastAttack = current;
+                executeAttack(player.getAttacks()[0], player, opponent);
             });
             two.setOnClickListener(v -> {
-                Attack current = player.getAttacks()[1];
-                String whatIsHappening = "You used " + current.getName() + "!";
-                TextView display = findViewById(R.id.log);
-                display.setText(whatIsHappening);
-                opponent.setHealth(opponent.getHealth() - current.getDamage());
-                lastAttack = current;
+                executeAttack(player.getAttacks()[1], player, opponent);
             });
             three.setOnClickListener(v -> {
-                Attack current = player.getAttacks()[2];
-                String whatIsHappening = "You used " + current.getName() + "!";
-                TextView display = findViewById(R.id.log);
-                display.setText(whatIsHappening);
-                opponent.setHealth(opponent.getHealth() - current.getDamage());
-                lastAttack = current;
+                executeAttack(player.getAttacks()[2], player, opponent);
             });
             four.setOnClickListener(v -> {
-                Attack current = player.getAttacks()[NUM_TYPES - 1];
-                String whatIsHappening = "You used " + current.getName() + "!";
-                TextView display = findViewById(R.id.log);
-                display.setText(whatIsHappening);
-                opponent.setHealth(opponent.getHealth() - current.getDamage());
-                lastAttack = current;
+                executeAttack(player.getAttacks()[NUM_TYPES - 1], player, opponent);
             });
             pH = "Health: " + player.getHealth();
             health.setText(pH);
             oH = "Health: " + opponent.getHealth();
             oppHealth.setText(oH);
         }
-        TextView display = findViewById(R.id.log);
         String won = "YOU WIN!";
         String lost = "YOU LOSE";
         if (player.getHealth() <= 0) {
             display.setText(won);
-        } else {
+        } else if (opponent.getHealth() <= 0) {
             display.setText(lost);
         }
+    }
+
+    /**
+     * execute a chosen attack.
+     * @param current attack chosen by player
+     * @param player player using attack
+     * @param opponent player receiving attack
+     */
+    public void executeAttack(final Attack current, final Bender player, final Bender opponent) {
+        String no = "You can't choose the same attack twice in a row.";
+        TextView display = findViewById(R.id.log);
+        if (current.equals(lastAttack)) {
+            display.setText(no);
+            return;
+        }
+        String oof = "The last attack was a defensive move! This attack did no damage!";
+        if (lastAttack.getType().equals("def")) {
+            display.setText(oof);
+            lastAttack = current;
+            return;
+        }
+        String superEffective = "The attack was super effective!";
+        if (player.getType().equals("earth") && opponent.getType().equals("air")) {
+            display.setText(superEffective);
+            opponent.setHealth(opponent.getHealth() - (NUM_TYPES - 1) * current.getDamage());
+            lastAttack = current;
+            return;
+        }
+        if (player.getType().equals("water") && opponent.getType().equals("fire")) {
+            display.setText(superEffective);
+            opponent.setHealth(opponent.getHealth() - (NUM_TYPES - 1) * current.getDamage());
+            lastAttack = current;
+            return;
+        }
+        if (player.getType().equals("fire") && opponent.getType().equals("water")) {
+            display.setText(superEffective);
+            opponent.setHealth(opponent.getHealth() - (NUM_TYPES - 1) * current.getDamage());
+            lastAttack = current;
+            return;
+        }
+        if (player.getType().equals("air") && opponent.getType().equals("earth")) {
+            display.setText(superEffective);
+            opponent.setHealth(opponent.getHealth() - (NUM_TYPES - 1) * current.getDamage());
+            lastAttack = current;
+            return;
+        }
+        String whatIsHappening = "You used " + current.getName() + "!";
+        display.setText(whatIsHappening);
+        opponent.setHealth(opponent.getHealth() - current.getDamage());
+        lastAttack = current;
+
     }
 
     /*/**

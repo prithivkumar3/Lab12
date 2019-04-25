@@ -143,7 +143,7 @@ public class Attack {
      * @return array of earth attacks
      */
     public static Attack[] earthAttacks() {
-        Attack wall = new Attack("Wall", "none", S, "opponent's next attack will do no damage");
+        Attack wall = new Attack("Wall", "def", S, "opponent's next attack will do no damage");
         Attack boulderThrow = new Attack("Boulder Throw", "earth", S, "triple damage against earthbenders");
         Attack kick = new Attack("Kick", "none", L, "kick");
         Attack punch = new Attack("Punch", "none", L, "punch");
@@ -156,7 +156,7 @@ public class Attack {
      */
     public static Attack[] airAttacks() {
         Attack airBlast = new Attack("Air Blast", "air", L, "triple damage against earthbenders");
-        Attack quickDodge = new Attack("Quick Dodge", "none", S, "opponent's next attack will do no damage");
+        Attack quickDodge = new Attack("Quick Dodge", "def", S, "opponent's next attack will do no damage");
         Attack kick = new Attack("Kick", "none", L, "kick");
         Attack punch = new Attack("Punch", "none", M, "punch");
         return new Attack[]{kick, punch, airBlast, quickDodge};
