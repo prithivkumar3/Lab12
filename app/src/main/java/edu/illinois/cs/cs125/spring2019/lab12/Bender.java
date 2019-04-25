@@ -21,6 +21,11 @@ public class Bender {
     private int health;
 
     /**
+     * max health.
+     */
+    private static final int MAX_HEALTH = 100;
+
+    /**
      * Attacks available to bender.
      */
     private Attack[] attacks;
@@ -30,7 +35,7 @@ public class Bender {
      * @param theName name entered by user.
      */
     public Bender(final String theType, final String theName) {
-        health = 0;
+        health = MAX_HEALTH;
         name = theName;
         type = theType;
         switch (type) {
@@ -46,4 +51,27 @@ public class Bender {
         }
     }
 
+    /**
+     * get the type of bender.
+     * @return type of bender
+     */
+    public String getType() {
+        return type;
+    }
+
+    /**
+     * get the name of the player.
+     * @return name of player
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * get the health of the player.
+     * @return health of player
+     */
+    public int getHealth() {
+        return health;
+    }
 }
