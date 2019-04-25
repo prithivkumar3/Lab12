@@ -94,25 +94,25 @@ public final class MainActivity extends AppCompatActivity {
         opponentName.setText(opponent.getName());
         ImageView playerI = findViewById(R.id.playerImage);
         switch (player.getType()) {
-            case "fire" : playerI.setImageResource(R.drawable.Fire);
+            case "fire" : playerI.setImageResource(R.drawable.fire);
                 break;
-            case "water" : playerI.setImageResource(R.drawable.Water);
+            case "water" : playerI.setImageResource(R.drawable.water);
                 break;
-            case "earth" : playerI.setImageResource(R.drawable.Earth);
+            case "earth" : playerI.setImageResource(R.drawable.earth);
                 break;
-            case "air" : playerI.setImageResource(R.drawable.Air);
+            case "air" : playerI.setImageResource(R.drawable.air);
                 break;
             default : break;
         }
         ImageView opponentI = findViewById(R.id.opponentImage);
         switch (opponent.getType()) {
-            case "fire" : opponentI.setImageResource(R.drawable.Fire);
+            case "fire" : opponentI.setImageResource(R.drawable.fire);
                 break;
-            case "water" : opponentI.setImageResource(R.drawable.Water);
+            case "water" : opponentI.setImageResource(R.drawable.water);
                 break;
-            case "earth" : opponentI.setImageResource(R.drawable.Earth);
+            case "earth" : opponentI.setImageResource(R.drawable.earth);
                 break;
-            case "air" : opponentI.setImageResource(R.drawable.Air);
+            case "air" : opponentI.setImageResource(R.drawable.air);
                 break;
             default : break;
         }
