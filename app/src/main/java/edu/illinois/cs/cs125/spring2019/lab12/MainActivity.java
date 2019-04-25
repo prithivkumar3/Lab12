@@ -74,7 +74,7 @@ public final class MainActivity extends AppCompatActivity {
                 Bender player = new Bender(type, inputName.getText().toString());
                 Random rand = new Random();
                 Bender opponent = new Bender(types[rand.nextInt(NUM_TYPES)], "Computer");
-                startTheGame(player, opponent);
+                runGame(player, opponent);
             } catch (NullPointerException e) {
                 findViewById(R.id.check).setVisibility(View.VISIBLE);
             }
@@ -86,8 +86,13 @@ public final class MainActivity extends AppCompatActivity {
      * @param player player
      * @param opponent computer playing against player
      */
-    public void startTheGame(final Bender player, final Bender opponent) {
+    public void runGame(final Bender player, final Bender opponent) {
         setContentView(R.layout.activity_main);
+        final Button restart = findViewById(R.id.start);
+        restart.setOnClickListener(v -> {
+            setContentView(R.layout.activity_main);
+            findViewById(R.id.check).setVisibility(View.GONE);
+        });
         TextView playerName = findViewById(R.id.player);
         playerName.setText(player.getName());
         TextView opponentName = findViewById(R.id.opponent);
@@ -116,17 +121,67 @@ public final class MainActivity extends AppCompatActivity {
                 break;
             default : break;
         }
-        TextView one = findViewById(R.id.attackOne);
-        TextView two = findViewById(R.id.attackTwo);
-        TextView three = findViewById(R.id.attackThree);
-        TextView four = findViewById(R.id.attackFour);
+        Button one = findViewById(R.id.attackOne);
+        Button two = findViewById(R.id.attackTwo);
+        Button three = findViewById(R.id.attackThree);
+        Button four = findViewById(R.id.attackFour);
         one.setText(player.getAttacks()[0].getName());
-        two.setText(player.getAttacks()[0].getName());
-        three.setText(player.getAttacks()[0].getName());
-        four.setText(player.getAttacks()[0].getName());
-        /*while (player.getHealth() > 0 && opponent.getHealth() > 0) {
-
-        }*/
+        two.setText(player.getAttacks()[NUM_TYPES - 2 - 1].getName());
+        three.setText(player.getAttacks()[NUM_TYPES - 2].getName());
+        four.setText(player.getAttacks()[NUM_TYPES - 1].getName());
+        TextView health = findViewById(R.id.health);
+        String pH = "Health: " + player.getHealth();
+        health.setText(pH);
+        TextView oppHealth = findViewById(R.id.oppHealth);
+        String oH = "Health: " + opponent.getHealth();
+        oppHealth.setText(oH);
+        while (player.getHealth() > 0 && opponent.getHealth() > 0) {
+            one.setOnClickListener(v -> {
+                Attack current = player.getAttacks()[0];
+                String whatIsHappening = "You used " + current.getName() + "!";
+                TextView display = findViewById(R.id.log);
+                display.setText(whatIsHappening);
+                opponent.setHealth(opponent.getHealth() - current.getDamage());
+                lastAttack = current;
+            });
+            two.setOnClickListener(v -> {
+                Attack current = player.getAttacks()[1];
+                String whatIsHappening = "You used " + current.getName() + "!";
+                TextView display = findViewById(R.id.log);
+                display.setText(whatIsHappening);
+                opponent.setHealth(opponent.getHealth() - current.getDamage());
+                lastAttack = current;
+            });
+            three.setOnClickListener(v -> {
+                Attack current = player.getAttacks()[2];
+                String whatIsHappening = "You used " + current.getName() + "!";
+                TextView display = findViewById(R.id.log);
+                display.setText(whatIsHappening);
+                opponent.setHealth(opponent.getHealth() - current.getDamage());
+                lastAttack = current;
+            });
+            four.setOnClickListener(v -> {
+                Attack current = player.getAttacks()[NUM_TYPES - 1];
+                String whatIsHappening = "You used " + current.getName() + "!";
+                TextView display = findViewById(R.id.log);
+                display.setText(whatIsHappening);
+                opponent.setHealth(opponent.getHealth() - current.getDamage());
+                lastAttack = current;
+            });
+            pH = "Health: " + player.getHealth();
+            health.setText(pH);
+            oH = "Health: " + opponent.getHealth();
+            oppHealth.setText(oH);
+        }
+        TextView display = findViewById(R.id.log);
+        String won = "YOU WIN!";
+        String lost = "YOU LOSE";
+        if (player.getHealth() <= 0) {
+            display.setText(won);
+        } else {
+            display.setText(lost);
+        }
+        setContentView(R.layout.login);
     }
 
     /*/**

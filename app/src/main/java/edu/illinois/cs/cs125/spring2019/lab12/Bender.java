@@ -76,6 +76,14 @@ public class Bender {
     }
 
     /**
+     * set health.
+     * @param newHealth new health
+     */
+    public void setHealth(final int newHealth) {
+        health = newHealth;
+    }
+
+    /**
      * get the attacks for this bender.
      * @return array of available attacks
      */

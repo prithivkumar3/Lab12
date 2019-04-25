@@ -22,13 +22,28 @@
         android:layout_gravity="right"
         app:srcCompat="@mipmap/ic_launcher" />
 
-    <TextView
-        android:id="@+id/opponent"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:freezesText="false"
-        android:gravity="right"
-        android:text="Computer" />
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/oppHealth"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Health" />
+
+        <TextView
+            android:id="@+id/opponent"
+            android:layout_width="210dp"
+            android:layout_height="30dp"
+            android:layout_gravity="right"
+            android:freezesText="false"
+            android:gravity="right"
+            android:text="Computer" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/log"
@@ -37,15 +52,29 @@
         android:gravity="center"
         android:text="FIGHT!" />
 
-    <TextView
-        android:id="@+id/player"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="29dp"
-        android:text="Player Name" />
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/player"
+            android:layout_width="242dp"
+            android:layout_height="29dp"
+            android:text="Player Name" />
+
+        <TextView
+            android:id="@+id/health"
+            android:layout_width="198dp"
+            android:layout_height="29dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Health" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <ImageView
@@ -60,7 +89,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
+            <Button
                 android:id="@+id/attackOne"
                 android:layout_width="236dp"
                 android:layout_height="37dp"
@@ -69,7 +98,7 @@
                 android:gravity="center_horizontal"
                 android:text="Attack One" />
 
-            <TextView
+            <Button
                 android:id="@+id/attackTwo"
                 android:layout_width="236dp"
                 android:layout_height="41dp"
@@ -79,7 +108,7 @@
                 android:gravity="center_horizontal"
                 android:text="Attack Two" />
 
-            <TextView
+            <Button
                 android:id="@+id/attackThree"
                 android:layout_width="236dp"
                 android:layout_height="34dp"
@@ -89,7 +118,7 @@
                 android:gravity="center_horizontal"
                 android:text="Attack Three" />
 
-            <TextView
+            <Button
                 android:id="@+id/attackFour"
                 android:layout_width="234dp"
                 android:layout_height="39dp"
@@ -100,6 +129,20 @@
                 android:text="Attack Four" />
         </LinearLayout>
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="63dp"
+            android:layout_gravity="bottom"
+            android:gravity="center"
+            android:text="RESTART" />
     </LinearLayout>
 
 </LinearLayout>
