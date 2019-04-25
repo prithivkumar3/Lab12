@@ -74,4 +74,12 @@ public class Bender {
     public int getHealth() {
         return health;
     }
+
+    /**
+     * get the attacks for this bender.
+     * @return array of available attacks
+     */
+    public Attack[] getAttacks() {
+        return attacks;
+    }
 }

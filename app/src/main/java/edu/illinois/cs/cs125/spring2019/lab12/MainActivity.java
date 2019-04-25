@@ -116,6 +116,14 @@ public final class MainActivity extends AppCompatActivity {
                 break;
             default : break;
         }
+        TextView one = findViewById(R.id.attackOne);
+        TextView two = findViewById(R.id.attackTwo);
+        TextView three = findViewById(R.id.attackThree);
+        TextView four = findViewById(R.id.attackFour);
+        one.setText(player.getAttacks()[0].getName());
+        two.setText(player.getAttacks()[0].getName());
+        three.setText(player.getAttacks()[0].getName());
+        four.setText(player.getAttacks()[0].getName());
         /*while (player.getHealth() > 0 && opponent.getHealth() > 0) {
 
         }*/

@@ -76,6 +76,45 @@ public class Attack {
     }
 
     /**
+     * get name of attack.
+     * @return name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * get type of attack.
+     * @return type
+     */
+    public String getType() {
+        return type;
+    }
+
+    /**
+     * get opposing type of bending.
+     * @return opposing type
+     */
+    public String getOpp() {
+        return opp;
+    }
+
+    /**
+     * get description of attack.
+     * @return description
+     */
+    public String getDescription() {
+        return description;
+    }
+
+    /**
+     * get damage caused by attack.
+     * @return damage
+     */
+    public int getDamage() {
+        return damage;
+    }
+    /**
      * four attacks available to firebenders.
      * @return array of fire attacks
      */
