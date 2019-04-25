@@ -10,6 +10,11 @@ public class Attack {
     private int damage;
 
     /**
+     * name of attack.
+     */
+    private String name;
+
+    /**
      * type of attack.
      */
     private String type;
@@ -18,6 +23,11 @@ public class Attack {
      * opposite type.
      */
     private String opp;
+
+    /**
+     * description of attack.
+     */
+    private String description;
 
     /**
      * damage.
@@ -41,12 +51,16 @@ public class Attack {
 
     /**
      * creates an attack.
+     * @param theName name of attack.
      * @param theType type of attack
      * @param theDamage damage done by attack
+     * @param theDescription description of attack
      */
-    public Attack(final String theType, final int theDamage) {
+    public Attack(final String theName, final String theType, final int theDamage, final String theDescription) {
+        name = theName;
         type = theType;
         damage = theDamage;
+        description = theDescription;
         switch (type) {
             case "fire" : opp = "water";
                 break;
@@ -66,10 +80,10 @@ public class Attack {
      * @return array of fire attacks
      */
     public static Attack[] fireAttacks() {
-        Attack lightning = new Attack("fire", M);
-        Attack fireball = new Attack("fire", S);
-        Attack kick = new Attack("none", L);
-        Attack punch = new Attack("none", M);
+        Attack lightning = new Attack("Lightning", "fire", M, "triple damage against waterbenders");
+        Attack fireball = new Attack("Fireball", "fire", S, "triple damage against waterbenders");
+        Attack kick = new Attack("Kick", "none", L, "kick");
+        Attack punch = new Attack("Punch", "none", M, "punch");
         return new Attack[]{kick, punch, lightning, fireball};
     }
 
@@ -78,10 +92,10 @@ public class Attack {
      * @return array of water attacks
      */
     public static Attack[] waterAttacks() {
-        Attack tidalWave = new Attack("water", L);
-        Attack waterWhip = new Attack("water", S);
-        Attack kick = new Attack("none", M);
-        Attack punch = new Attack("none", M);
+        Attack tidalWave = new Attack("Tidal Wave", "none", XL, "overwhelming tidal wave");
+        Attack waterWhip = new Attack("Water Whip", "water", S, "triple damage against firebenders");
+        Attack kick = new Attack("Kick", "none", M, "kick");
+        Attack punch = new Attack("Punch", "none", M, "punch");
         return new Attack[]{kick, punch, tidalWave, waterWhip};
     }
 
@@ -90,10 +104,10 @@ public class Attack {
      * @return array of earth attacks
      */
     public static Attack[] earthAttacks() {
-        Attack wall = new Attack("none", S);
-        Attack boulderThrow = new Attack("earth", S);
-        Attack kick = new Attack("none", L);
-        Attack punch = new Attack("none", L);
+        Attack wall = new Attack("Wall", "none", S, "opponent's next attack will do no damage");
+        Attack boulderThrow = new Attack("Boulder Throw", "earth", S, "triple damage against earthbenders");
+        Attack kick = new Attack("Kick", "none", L, "kick");
+        Attack punch = new Attack("Punch", "none", L, "punch");
         return new Attack[]{kick, punch, wall, boulderThrow};
     }
 
@@ -102,10 +116,10 @@ public class Attack {
      * @return array of air attacks
      */
     public static Attack[] airAttacks() {
-        Attack airBlast = new Attack("air", L);
-        Attack quickDodge = new Attack("none", S);
-        Attack kick = new Attack("none", L);
-        Attack punch = new Attack("none", M);
+        Attack airBlast = new Attack("Air Blast", "air", L, "triple damage against earthbenders");
+        Attack quickDodge = new Attack("Quick Dodge", "none", S, "opponent's next attack will do no damage");
+        Attack kick = new Attack("Kick", "none", L, "kick");
+        Attack punch = new Attack("Punch", "none", M, "punch");
         return new Attack[]{kick, punch, airBlast, quickDodge};
     }
 }

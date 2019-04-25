@@ -47,9 +47,9 @@ public final class MainActivity extends AppCompatActivity {
 
     }
 
-    /**
+    /*/**
      * Run when this activity is no longer visible.
-     */
+     *
     @Override
     protected void onPause() {
         super.onPause();
