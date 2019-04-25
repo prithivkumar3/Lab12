@@ -48,7 +48,7 @@
     <TextView
         android:id="@+id/log"
         android:layout_width="match_parent"
-        android:layout_height="57dp"
+        android:layout_height="96dp"
         android:gravity="center"
         android:text="FIGHT!" />
 
@@ -85,24 +85,22 @@
             app:srcCompat="@mipmap/ic_launcher" />
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="196dp"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <Button
                 android:id="@+id/attackOne"
-                android:layout_width="236dp"
+                android:layout_width="196dp"
                 android:layout_height="37dp"
-                android:layout_gravity="right"
                 android:foregroundGravity="right"
                 android:gravity="center_horizontal"
                 android:text="Attack One" />
 
             <Button
                 android:id="@+id/attackTwo"
-                android:layout_width="236dp"
+                android:layout_width="196dp"
                 android:layout_height="41dp"
-                android:layout_gravity="right"
                 android:layout_weight="1"
                 android:foregroundGravity="right"
                 android:gravity="center_horizontal"
@@ -110,9 +108,8 @@
 
             <Button
                 android:id="@+id/attackThree"
-                android:layout_width="236dp"
+                android:layout_width="196dp"
                 android:layout_height="34dp"
-                android:layout_gravity="right"
                 android:layout_weight="1"
                 android:foregroundGravity="right"
                 android:gravity="center_horizontal"
@@ -120,13 +117,48 @@
 
             <Button
                 android:id="@+id/attackFour"
-                android:layout_width="234dp"
+                android:layout_width="196dp"
                 android:layout_height="39dp"
-                android:layout_gravity="right"
                 android:layout_weight="1"
                 android:foregroundGravity="right"
                 android:gravity="center_horizontal"
                 android:text="Attack Four" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/infoOne"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:layout_weight="1"
+                android:text="i" />
+
+            <Button
+                android:id="@+id/infoTwo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="i" />
+
+            <Button
+                android:id="@+id/infoThree"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="i" />
+
+            <Button
+                android:id="@+id/infoFour"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="i" />
         </LinearLayout>
 
     </LinearLayout>

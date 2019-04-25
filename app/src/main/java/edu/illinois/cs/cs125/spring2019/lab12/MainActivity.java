@@ -85,45 +85,13 @@ public final class MainActivity extends AppCompatActivity {
                 Bender opponent = new Bender(types[rand.nextInt(NUM_TYPES)], "Computer");
                 setContentView(R.layout.activity_main);
                 Button restart = findViewById(R.id.restart);
-                restart.setOnClickListener(v -> setContentView(R.layout.login));
+                restart.setOnClickListener(v -> finish());
+                TextView display = findViewById(R.id.log);
                 TextView playerName = findViewById(R.id.player);
                 playerName.setText(player.getName());
                 TextView opponentName = findViewById(R.id.opponent);
                 opponentName.setText(opponent.getName());
-                ImageView playerI = findViewById(R.id.playerImage);
-                switch (player.getType()) {
-                    case "fire":
-                        playerI.setImageResource(R.drawable.fire);
-                        break;
-                    case "water":
-                        playerI.setImageResource(R.drawable.water);
-                        break;
-                    case "earth":
-                        playerI.setImageResource(R.drawable.earth);
-                        break;
-                    case "air":
-                        playerI.setImageResource(R.drawable.air);
-                        break;
-                    default:
-                        break;
-                }
-                ImageView opponentI = findViewById(R.id.opponentImage);
-                switch (opponent.getType()) {
-                    case "fire":
-                        opponentI.setImageResource(R.drawable.fire);
-                        break;
-                    case "water":
-                        opponentI.setImageResource(R.drawable.water);
-                        break;
-                    case "earth":
-                        opponentI.setImageResource(R.drawable.earth);
-                        break;
-                    case "air":
-                        opponentI.setImageResource(R.drawable.air);
-                        break;
-                    default:
-                        break;
-                }
+                setImages(player, opponent);
                 Button one = findViewById(R.id.attackOne);
                 Button two = findViewById(R.id.attackTwo);
                 Button three = findViewById(R.id.attackThree);
@@ -132,6 +100,43 @@ public final class MainActivity extends AppCompatActivity {
                 two.setText(player.getAttacks()[NUM_TYPES - 2 - 1].getName());
                 three.setText(player.getAttacks()[NUM_TYPES - 2].getName());
                 four.setText(player.getAttacks()[NUM_TYPES - 1].getName());
+                String info = "i", dis = "FIGHT!";
+                Button infoOne = findViewById(R.id.infoOne);
+                infoOne.setText(info);
+                infoOne.setOnClickListener(v -> {
+                    if (display.getText().toString().equals(dis)) {
+                        display.setText(player.getAttacks()[0].getDescription());
+                    } else {
+                        display.setText(dis);
+                    }
+                });
+                Button infoTwo = findViewById(R.id.infoTwo);
+                infoTwo.setText(info);
+                infoOne.setOnClickListener(v -> {
+                    if (display.getText().toString().equals(dis)) {
+                        display.setText(player.getAttacks()[1].getDescription());
+                    } else {
+                        display.setText(dis);
+                    }
+                });
+                Button infoThree = findViewById(R.id.infoThree);
+                infoThree.setText(info);
+                infoOne.setOnClickListener(v -> {
+                    if (display.getText().toString().equals(dis)) {
+                        display.setText(player.getAttacks()[2].getDescription());
+                    } else {
+                        display.setText(dis);
+                    }
+                });
+                Button infoFour = findViewById(R.id.infoFour);
+                infoFour.setText(info);
+                infoOne.setOnClickListener(v -> {
+                    if (display.getText().toString().equals(dis)) {
+                        display.setText(player.getAttacks()[NUM_TYPES - 1].getDescription());
+                    } else {
+                        display.setText(dis);
+                    }
+                });
                 TextView health = findViewById(R.id.health);
                 String pH = "Health: " + player.getHealth();
                 health.setText(pH);
@@ -207,6 +212,47 @@ public final class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * sets images for each player.
+     * @param player the player
+     * @param opponent the opponent (computer)
+     */
+    public void setImages(final Bender player, final Bender opponent) {
+        ImageView playerI = findViewById(R.id.playerImage);
+        switch (player.getType()) {
+            case "fire":
+                playerI.setImageResource(R.drawable.fire);
+                break;
+            case "water":
+                playerI.setImageResource(R.drawable.water);
+                break;
+            case "earth":
+                playerI.setImageResource(R.drawable.earth);
+                break;
+            case "air":
+                playerI.setImageResource(R.drawable.air);
+                break;
+            default:
+                break;
+        }
+        ImageView opponentI = findViewById(R.id.opponentImage);
+        switch (opponent.getType()) {
+            case "fire":
+                opponentI.setImageResource(R.drawable.fire);
+                break;
+            case "water":
+                opponentI.setImageResource(R.drawable.water);
+                break;
+            case "earth":
+                opponentI.setImageResource(R.drawable.earth);
+                break;
+            case "air":
+                opponentI.setImageResource(R.drawable.air);
+                break;
+            default:
+                break;
+        }
+    }
     /**
      * execute a chosen attack.
      * @param current attack chosen by player
