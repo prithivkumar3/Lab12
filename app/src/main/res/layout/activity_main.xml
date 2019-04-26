@@ -46,9 +46,15 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/oppLog"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:gravity="center" />
+
+    <TextView
         android:id="@+id/log"
         android:layout_width="match_parent"
-        android:layout_height="96dp"
+        android:layout_height="54dp"
         android:gravity="center"
         android:text="FIGHT!" />
 

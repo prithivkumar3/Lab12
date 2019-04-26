@@ -146,44 +146,24 @@ public final class MainActivity extends AppCompatActivity {
                 one.setOnClickListener(v -> {
                     executeAttack(player.getAttacks()[0], opponent);
                     finish(player, opponent);
-                    try {
-                        Thread.sleep(TIME);
-                    } catch (InterruptedException e) {
-                        Thread.currentThread().interrupt();
-                    }
                     opponentExecuteAttack(opponent.getAttacks()[rand.nextInt(NUM_TYPES)], player);
                     finish(player, opponent);
                 });
                 two.setOnClickListener(v -> {
                     executeAttack(player.getAttacks()[1], opponent);
                     finish(player, opponent);
-                    try {
-                        Thread.sleep(TIME);
-                    } catch (InterruptedException e) {
-                        Thread.currentThread().interrupt();
-                    }
                     opponentExecuteAttack(opponent.getAttacks()[rand.nextInt(NUM_TYPES)], player);
                     finish(player, opponent);
                 });
                 three.setOnClickListener(v -> {
                     executeAttack(player.getAttacks()[2], opponent);
                     finish(player, opponent);
-                    try {
-                        Thread.sleep(TIME);
-                    } catch (InterruptedException e) {
-                        Thread.currentThread().interrupt();
-                    }
                     opponentExecuteAttack(opponent.getAttacks()[rand.nextInt(NUM_TYPES)], player);
                     finish(player, opponent);
                 });
                 four.setOnClickListener(v -> {
                     executeAttack(player.getAttacks()[NUM_TYPES - 1], opponent);
                     finish(player, opponent);
-                    try {
-                        Thread.sleep(TIME);
-                    } catch (InterruptedException e) {
-                        Thread.currentThread().interrupt();
-                    }
                     opponentExecuteAttack(opponent.getAttacks()[rand.nextInt(NUM_TYPES)], player);
                     finish(player, opponent);
                 });
@@ -200,10 +180,22 @@ public final class MainActivity extends AppCompatActivity {
      */
     public void finish(final Bender player, final Bender opponent) {
         if (player.getHealth() <= 0) {
+            TextView oppDisplay = findViewById(R.id.oppLog);
+            String nothing = "";
+            oppDisplay.setText(nothing);
+            TextView health = findViewById(R.id.health);
+            String pH = "Health: 0";
+            health.setText(pH);
             TextView display = findViewById(R.id.log);
             String state = "YOU LOSE";
             display.setText(state);
         } else if (opponent.getHealth() <= 0) {
+            TextView oppDisplay = findViewById(R.id.oppLog);
+            String nothing = "";
+            oppDisplay.setText(nothing);
+            TextView oppHealth = findViewById(R.id.oppHealth);
+            String oH = "Health: 0";
+            oppHealth.setText(oH);
             TextView display = findViewById(R.id.log);
             String state = "YOU WIN!";
             display.setText(state);
@@ -270,7 +262,7 @@ public final class MainActivity extends AppCompatActivity {
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
-        String oof = "The last attack was a defensive move! This attack did no damage!";
+        String oof = "The opponent's last attack was a defensive move! This attack did no damage!";
         if (lastAttack != null && lastAttack.getType().equals("def")) {
             display.setText(oof);
             lastAttackA = current;
@@ -305,24 +297,24 @@ public final class MainActivity extends AppCompatActivity {
         if (current.equals(lastAttackB)) {
             return;
         }
-        TextView display = findViewById(R.id.log);
+        TextView oppDisplay = findViewById(R.id.oppLog);
         String whatIsHappening = "The opponent used " + current.getName() + "!";
-        display.setText(whatIsHappening);
+        oppDisplay.setText(whatIsHappening);
         try {
             Thread.sleep(TIME);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
-        String oof = "The last attack was a defensive move! This attack did no damage!";
+        String oof = "Your last attack was a defensive move! The opponent's attack did no damage!";
         if (lastAttack != null && lastAttack.getType().equals("def")) {
-            display.setText(oof);
+            oppDisplay.setText(oof);
             lastAttackB = current;
             lastAttack = current;
             return;
         }
         String superEffective = "The opponent's " + current.getName() + " was super effective!";
         if (current.getOpp() != null && current.getOpp().equals(opponent.getType())) {
-            display.setText(superEffective);
+            oppDisplay.setText(superEffective);
             opponent.setHealth(opponent.getHealth() - (NUM_TYPES - 1) * current.getDamage());
             TextView health = findViewById(R.id.health);
             String pH = "Health: " + opponent.getHealth();
