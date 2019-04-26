@@ -112,7 +112,7 @@ public final class MainActivity extends AppCompatActivity {
                 });
                 Button infoTwo = findViewById(R.id.infoTwo);
                 infoTwo.setText(info);
-                infoOne.setOnClickListener(v -> {
+                infoTwo.setOnClickListener(v -> {
                     if (display.getText().toString().equals(dis)) {
                         display.setText(player.getAttacks()[1].getDescription());
                     } else {
@@ -121,7 +121,7 @@ public final class MainActivity extends AppCompatActivity {
                 });
                 Button infoThree = findViewById(R.id.infoThree);
                 infoThree.setText(info);
-                infoOne.setOnClickListener(v -> {
+                infoThree.setOnClickListener(v -> {
                     if (display.getText().toString().equals(dis)) {
                         display.setText(player.getAttacks()[2].getDescription());
                     } else {
@@ -130,7 +130,7 @@ public final class MainActivity extends AppCompatActivity {
                 });
                 Button infoFour = findViewById(R.id.infoFour);
                 infoFour.setText(info);
-                infoOne.setOnClickListener(v -> {
+                infoFour.setOnClickListener(v -> {
                     if (display.getText().toString().equals(dis)) {
                         display.setText(player.getAttacks()[NUM_TYPES - 1].getDescription());
                     } else {
@@ -207,8 +207,6 @@ public final class MainActivity extends AppCompatActivity {
             TextView display = findViewById(R.id.log);
             String state = "YOU WIN!";
             display.setText(state);
-        } else {
-            return;
         }
     }
 
