@@ -183,7 +183,7 @@ public final class MainActivity extends AppCompatActivity {
                 oppHealth.setText(oH);
                 Animation slide = AnimationUtils.loadAnimation(MainActivity.this, R.anim.lefttoright);
                 Animation bounce = AnimationUtils.loadAnimation(MainActivity.this, R.anim.bounce);
-                bounce.setStartTime(TIME * 3);
+                bounce.setStartTime(TIME * (2 + 1));
                 slide.setStartTime(TIME);
                 Animation button = AnimationUtils.loadAnimation(MainActivity.this, R.anim.fadein);
                 one.setOnClickListener(v -> {
