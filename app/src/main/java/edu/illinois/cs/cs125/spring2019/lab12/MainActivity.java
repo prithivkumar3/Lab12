@@ -183,14 +183,12 @@ public final class MainActivity extends AppCompatActivity {
                 oppHealth.setText(oH);
                 Animation slide = AnimationUtils.loadAnimation(MainActivity.this, R.anim.lefttoright);
                 Animation bounce = AnimationUtils.loadAnimation(MainActivity.this, R.anim.bounce);
-                Animation reverse = AnimationUtils.loadAnimation(MainActivity.this, R.anim.righttoleft);
+                //Animation reverse = AnimationUtils.loadAnimation(MainActivity.this, R.anim.righttoleft);
                 one.setOnClickListener(v -> {
                     playerImage.startAnimation(slide);
                     oppImage.startAnimation(bounce);
                     executeAttack(player.getAttacks()[0], opponent);
                     finish(player, opponent);
-                    oppImage.startAnimation(reverse);
-                    playerImage.startAnimation(bounce);
                     opponentExecuteAttack(opponent.getAttacks()[rand.nextInt(NUM_TYPES)], player);
                     finish(player, opponent);
                 });
@@ -199,8 +197,6 @@ public final class MainActivity extends AppCompatActivity {
                     oppImage.startAnimation(bounce);
                     executeAttack(player.getAttacks()[1], opponent);
                     finish(player, opponent);
-                    oppImage.startAnimation(reverse);
-                    playerImage.startAnimation(bounce);
                     opponentExecuteAttack(opponent.getAttacks()[rand.nextInt(NUM_TYPES)], player);
                     finish(player, opponent);
                 });
@@ -209,8 +205,6 @@ public final class MainActivity extends AppCompatActivity {
                     oppImage.startAnimation(bounce);
                     executeAttack(player.getAttacks()[2], opponent);
                     finish(player, opponent);
-                    oppImage.startAnimation(reverse);
-                    playerImage.startAnimation(bounce);
                     opponentExecuteAttack(opponent.getAttacks()[rand.nextInt(NUM_TYPES)], player);
                     finish(player, opponent);
                 });
@@ -219,8 +213,6 @@ public final class MainActivity extends AppCompatActivity {
                     oppImage.startAnimation(bounce);
                     executeAttack(player.getAttacks()[NUM_TYPES - 1], opponent);
                     finish(player, opponent);
-                    oppImage.startAnimation(reverse);
-                    playerImage.startAnimation(bounce);
                     opponentExecuteAttack(opponent.getAttacks()[rand.nextInt(NUM_TYPES)], player);
                     finish(player, opponent);
                 });
