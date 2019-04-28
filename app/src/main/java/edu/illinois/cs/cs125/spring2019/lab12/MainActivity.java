@@ -1,28 +1,53 @@
 package edu.illinois.cs.cs125.spring2019.lab12;
+//package com.microsoft.cognitiveservices.speech.samples.quickstart;
+
 
 import android.support.design.widget.TextInputEditText;
+//import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+//import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.android.volley.Request;
+/*import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 
 import org.json.JSONException;
-import org.json.JSONObject;
+import org.json.JSONObject;*/
 
 import java.util.Random;
+
+/*import com.microsoft.cognitiveservices.speech.ResultReason;
+import com.microsoft.cognitiveservices.speech.SpeechConfig;
+import com.microsoft.cognitiveservices.speech.SpeechRecognitionResult;
+import com.microsoft.cognitiveservices.speech.SpeechRecognizer;
+
+import java.util.concurrent.Future;
+
+import static android.Manifest.permission.*;*/
+
 
 /**
  * Main activity for Final Project.
  */
 public final class MainActivity extends AppCompatActivity {
+    /**
+     * API Key.
+     */
+    private static String speechSubscriptionKey = "e5e81ef999224f11b053c5da0bc21a39";
+
+    /**
+     * service region.
+     */
+    private static String serviceRegion = "centralus";
+
     /** Default logging tag for messages from the main activity. */
     private static final String TAG = "Lab12:Main";
 
@@ -67,6 +92,8 @@ public final class MainActivity extends AppCompatActivity {
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
+        /*int requestCode = 5; // unique code for the permission request
+        ActivityCompat.requestPermissions(MainActivity.this, new String[]{RECORD_AUDIO, INTERNET}, requestCode);*/
         TextView check = findViewById(R.id.check);
         String invalid = "Please Enter a Valid Bender Type.";
         check.setText(invalid);
@@ -101,6 +128,8 @@ public final class MainActivity extends AppCompatActivity {
                 TextView opponentName = findViewById(R.id.opponent);
                 opponentName.setText(opponent.getName());
                 setImages(player, opponent);
+                ImageView playerImage = findViewById(R.id.playerImage);
+                ImageView oppImage = findViewById(R.id.opponentImage);
                 Button one = findViewById(R.id.attackOne);
                 Button two = findViewById(R.id.attackTwo);
                 Button three = findViewById(R.id.attackThree);
@@ -152,25 +181,30 @@ public final class MainActivity extends AppCompatActivity {
                 TextView oppHealth = findViewById(R.id.oppHealth);
                 String oH = "Health: " + opponent.getHealth();
                 oppHealth.setText(oH);
+                Animation animation = AnimationUtils.loadAnimation(MainActivity.this, R.anim.bounce);
                 one.setOnClickListener(v -> {
+                    playerImage.startAnimation(animation);
                     executeAttack(player.getAttacks()[0], opponent);
                     finish(player, opponent);
                     opponentExecuteAttack(opponent.getAttacks()[rand.nextInt(NUM_TYPES)], player);
                     finish(player, opponent);
                 });
                 two.setOnClickListener(v -> {
+                    playerImage.startAnimation(animation);
                     executeAttack(player.getAttacks()[1], opponent);
                     finish(player, opponent);
                     opponentExecuteAttack(opponent.getAttacks()[rand.nextInt(NUM_TYPES)], player);
                     finish(player, opponent);
                 });
                 three.setOnClickListener(v -> {
+                    playerImage.startAnimation(animation);
                     executeAttack(player.getAttacks()[2], opponent);
                     finish(player, opponent);
                     opponentExecuteAttack(opponent.getAttacks()[rand.nextInt(NUM_TYPES)], player);
                     finish(player, opponent);
                 });
                 four.setOnClickListener(v -> {
+                    playerImage.startAnimation(animation);
                     executeAttack(player.getAttacks()[NUM_TYPES - 1], opponent);
                     finish(player, opponent);
                     opponentExecuteAttack(opponent.getAttacks()[rand.nextInt(NUM_TYPES)], player);
@@ -181,6 +215,43 @@ public final class MainActivity extends AppCompatActivity {
             }
         });
     }
+/*
+    /**
+     * Speech to Text Button.
+     * @param v on click view
+     *
+    public void onSpeechButtonClicked(final View v) {
+        TextView txt = (TextView) this.findViewById(R.id.textView); // 'hello' is the ID of your text view
+
+        try {
+            SpeechConfig config = SpeechConfig.fromSubscription(speechSubscriptionKey, serviceRegion);
+            assert(config != null);
+
+            SpeechRecognizer reco = new SpeechRecognizer(config);
+            assert(reco != null);
+
+            Future<SpeechRecognitionResult> task = reco.recognizeOnceAsync();
+            assert(task != null);
+
+            // Note: this will block the UI thread, so eventually, you want to
+            //        register for the event (see full samples)
+            SpeechRecognitionResult result = task.get();
+            assert(result != null);
+
+            if (result.getReason() == ResultReason.RecognizedSpeech) {
+                txt.setText(result.toString());
+            }
+            else {
+                txt.setText("Error recognizing. Did you update the subscription info?"
+                + System.lineSeparator() + result.toString());
+            }
+
+            reco.close();
+        } catch (Exception ex) {
+            Log.e("SpeechSDKDemo", "unexpected " + ex.getMessage());
+            assert(false);
+        }
+    }*/
 
     /**
      * finish off the program.
@@ -348,11 +419,11 @@ public final class MainActivity extends AppCompatActivity {
         super.onPause();
     }
 */
-    /**
+/*    /**
      * Make a call to the IP geolocation API.
      *
      * @param ipAddress IP address to look up
-     */
+     *
     public void startAPICall(final String ipAddress) {
         try {
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
@@ -375,19 +446,19 @@ public final class MainActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
+    }*/
 
-    /**
+    /*
      * Handle the response from our IP geolocation API.
      *
      * @param response response from our IP geolocation API.
      *
-     */
+     *
     void apiCallDone(final JSONObject response) {
         try {
             Log.d(TAG, response.toString(2));
             // Example of how to pull a field off the returned JSON object
             Log.i(TAG, response.get("hostname").toString());
         } catch (JSONException ignored) { }
-    }
+    }*/
 }

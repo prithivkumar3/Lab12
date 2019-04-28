@@ -52,7 +52,21 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="283dp"
+        android:layout_height="wrap_content"
         app:srcCompat="@drawable/intro" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onSpeechButtonClicked"
+        android:text="Record" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:gravity="center"
+        android:text="READY PLAYER ONE" />
 
 </LinearLayout>
