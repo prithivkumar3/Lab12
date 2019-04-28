@@ -77,7 +77,7 @@ public final class MainActivity extends AppCompatActivity {
     /**
      * wait time.
      */
-    private static final int TIME = 1000;
+    private static final int TIME = 750;
 
     /**
      * types of benders for computer to randomly choose.
@@ -183,8 +183,11 @@ public final class MainActivity extends AppCompatActivity {
                 oppHealth.setText(oH);
                 Animation slide = AnimationUtils.loadAnimation(MainActivity.this, R.anim.lefttoright);
                 Animation bounce = AnimationUtils.loadAnimation(MainActivity.this, R.anim.bounce);
-                //Animation reverse = AnimationUtils.loadAnimation(MainActivity.this, R.anim.righttoleft);
+                bounce.setStartTime(TIME * 3);
+                slide.setStartTime(TIME);
+                Animation button = AnimationUtils.loadAnimation(MainActivity.this, R.anim.fadein);
                 one.setOnClickListener(v -> {
+                    one.startAnimation(button);
                     playerImage.startAnimation(slide);
                     oppImage.startAnimation(bounce);
                     executeAttack(player.getAttacks()[0], opponent);
@@ -193,6 +196,7 @@ public final class MainActivity extends AppCompatActivity {
                     finish(player, opponent);
                 });
                 two.setOnClickListener(v -> {
+                    two.startAnimation(button);
                     playerImage.startAnimation(slide);
                     oppImage.startAnimation(bounce);
                     executeAttack(player.getAttacks()[1], opponent);
@@ -201,6 +205,7 @@ public final class MainActivity extends AppCompatActivity {
                     finish(player, opponent);
                 });
                 three.setOnClickListener(v -> {
+                    three.startAnimation(button);
                     playerImage.startAnimation(slide);
                     oppImage.startAnimation(bounce);
                     executeAttack(player.getAttacks()[2], opponent);
@@ -209,6 +214,7 @@ public final class MainActivity extends AppCompatActivity {
                     finish(player, opponent);
                 });
                 four.setOnClickListener(v -> {
+                    four.startAnimation(button);
                     playerImage.startAnimation(slide);
                     oppImage.startAnimation(bounce);
                     executeAttack(player.getAttacks()[NUM_TYPES - 1], opponent);
