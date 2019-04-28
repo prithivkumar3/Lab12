@@ -181,32 +181,46 @@ public final class MainActivity extends AppCompatActivity {
                 TextView oppHealth = findViewById(R.id.oppHealth);
                 String oH = "Health: " + opponent.getHealth();
                 oppHealth.setText(oH);
-                Animation animation = AnimationUtils.loadAnimation(MainActivity.this, R.anim.bounce);
+                Animation slide = AnimationUtils.loadAnimation(MainActivity.this, R.anim.lefttoright);
+                Animation bounce = AnimationUtils.loadAnimation(MainActivity.this, R.anim.bounce);
+                Animation reverse = AnimationUtils.loadAnimation(MainActivity.this, R.anim.righttoleft);
                 one.setOnClickListener(v -> {
-                    playerImage.startAnimation(animation);
+                    playerImage.startAnimation(slide);
+                    oppImage.startAnimation(bounce);
                     executeAttack(player.getAttacks()[0], opponent);
                     finish(player, opponent);
+                    oppImage.startAnimation(reverse);
+                    playerImage.startAnimation(bounce);
                     opponentExecuteAttack(opponent.getAttacks()[rand.nextInt(NUM_TYPES)], player);
                     finish(player, opponent);
                 });
                 two.setOnClickListener(v -> {
-                    playerImage.startAnimation(animation);
+                    playerImage.startAnimation(slide);
+                    oppImage.startAnimation(bounce);
                     executeAttack(player.getAttacks()[1], opponent);
                     finish(player, opponent);
+                    oppImage.startAnimation(reverse);
+                    playerImage.startAnimation(bounce);
                     opponentExecuteAttack(opponent.getAttacks()[rand.nextInt(NUM_TYPES)], player);
                     finish(player, opponent);
                 });
                 three.setOnClickListener(v -> {
-                    playerImage.startAnimation(animation);
+                    playerImage.startAnimation(slide);
+                    oppImage.startAnimation(bounce);
                     executeAttack(player.getAttacks()[2], opponent);
                     finish(player, opponent);
+                    oppImage.startAnimation(reverse);
+                    playerImage.startAnimation(bounce);
                     opponentExecuteAttack(opponent.getAttacks()[rand.nextInt(NUM_TYPES)], player);
                     finish(player, opponent);
                 });
                 four.setOnClickListener(v -> {
-                    playerImage.startAnimation(animation);
+                    playerImage.startAnimation(slide);
+                    oppImage.startAnimation(bounce);
                     executeAttack(player.getAttacks()[NUM_TYPES - 1], opponent);
                     finish(player, opponent);
+                    oppImage.startAnimation(reverse);
+                    playerImage.startAnimation(bounce);
                     opponentExecuteAttack(opponent.getAttacks()[rand.nextInt(NUM_TYPES)], player);
                     finish(player, opponent);
                 });
