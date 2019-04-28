@@ -1,12 +1,9 @@
 package edu.illinois.cs.cs125.spring2019.lab12;
-//package com.microsoft.cognitiveservices.speech.samples.quickstart;
 
 
 import android.support.design.widget.TextInputEditText;
-//import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-//import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -14,46 +11,13 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-/*import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-
-import org.json.JSONException;
-import org.json.JSONObject;*/
-
 import java.util.Random;
-
-/*import com.microsoft.cognitiveservices.speech.ResultReason;
-import com.microsoft.cognitiveservices.speech.SpeechConfig;
-import com.microsoft.cognitiveservices.speech.SpeechRecognitionResult;
-import com.microsoft.cognitiveservices.speech.SpeechRecognizer;
-
-import java.util.concurrent.Future;
-
-import static android.Manifest.permission.*;*/
 
 
 /**
  * Main activity for Final Project.
  */
 public final class MainActivity extends AppCompatActivity {
-    /**
-     * API Key.
-     */
-    private static String speechSubscriptionKey = "e5e81ef999224f11b053c5da0bc21a39";
-
-    /**
-     * service region.
-     */
-    private static String serviceRegion = "centralus";
-
-    /** Default logging tag for messages from the main activity. */
-    private static final String TAG = "Lab12:Main";
-
-    //** Request queue for our API requests. */
-    //private static RequestQueue requestQueue;
-
     /**
      * last attack used.
      */
@@ -75,11 +39,6 @@ public final class MainActivity extends AppCompatActivity {
     private static final int NUM_TYPES = 4;
 
     /**
-     * wait time.
-     */
-    private static final int TIME = 750;
-
-    /**
      * types of benders for computer to randomly choose.
      */
     private static String[] types = {"fire", "water", "earth", "air"};
@@ -92,14 +51,11 @@ public final class MainActivity extends AppCompatActivity {
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
-        /*int requestCode = 5; // unique code for the permission request
-        ActivityCompat.requestPermissions(MainActivity.this, new String[]{RECORD_AUDIO, INTERNET}, requestCode);*/
         TextView check = findViewById(R.id.check);
         String invalid = "Please Enter a Valid Bender Type.";
         check.setText(invalid);
         check.setVisibility(View.GONE);
-        final TextInputEditText inputName = findViewById(R.id.inputName);
-        final TextInputEditText inputType = findViewById(R.id.inputType);
+        final TextInputEditText inputName = findViewById(R.id.inputName), inputType = findViewById(R.id.inputType);
         final Button startGame = findViewById(R.id.start);
         startGame.setOnClickListener(b -> {
             try {
@@ -122,18 +78,14 @@ public final class MainActivity extends AppCompatActivity {
                 setContentView(R.layout.activity_main);
                 Button restart = findViewById(R.id.restart);
                 restart.setOnClickListener(v -> finish());
-                TextView display = findViewById(R.id.log);
-                TextView playerName = findViewById(R.id.player);
+                TextView display = findViewById(R.id.log), playerName = findViewById(R.id.player);
                 playerName.setText(player.getName());
                 TextView opponentName = findViewById(R.id.opponent);
                 opponentName.setText(opponent.getName());
                 setImages(player, opponent);
-                ImageView playerImage = findViewById(R.id.playerImage);
-                ImageView oppImage = findViewById(R.id.opponentImage);
-                Button one = findViewById(R.id.attackOne);
-                Button two = findViewById(R.id.attackTwo);
-                Button three = findViewById(R.id.attackThree);
-                Button four = findViewById(R.id.attackFour);
+                ImageView playerImage = findViewById(R.id.playerImage), oppImage = findViewById(R.id.opponentImage);
+                Button one = findViewById(R.id.attackOne), two = findViewById(R.id.attackTwo);
+                Button three = findViewById(R.id.attackThree), four = findViewById(R.id.attackFour);
                 one.setText(player.getAttacks()[0].getName());
                 two.setText(player.getAttacks()[NUM_TYPES - 2 - 1].getName());
                 three.setText(player.getAttacks()[NUM_TYPES - 2].getName());
@@ -183,43 +135,61 @@ public final class MainActivity extends AppCompatActivity {
                 oppHealth.setText(oH);
                 Animation slide = AnimationUtils.loadAnimation(MainActivity.this, R.anim.lefttoright);
                 Animation bounce = AnimationUtils.loadAnimation(MainActivity.this, R.anim.bounce);
-                bounce.setStartTime(TIME * (2 + 1));
-                slide.setStartTime(TIME);
-                Animation button = AnimationUtils.loadAnimation(MainActivity.this, R.anim.fadein);
+                Animation reverse = AnimationUtils.loadAnimation(MainActivity.this, R.anim.righttoleft);
                 one.setOnClickListener(v -> {
-                    one.startAnimation(button);
                     playerImage.startAnimation(slide);
                     oppImage.startAnimation(bounce);
-                    executeAttack(player.getAttacks()[0], opponent);
+                    if (!executeAttack(player.getAttacks()[0], opponent)) {
+                        return;
+                    }
                     finish(player, opponent);
-                    opponentExecuteAttack(opponent.getAttacks()[rand.nextInt(NUM_TYPES)], player);
+                    oppImage.startAnimation(reverse);
+                    playerImage.startAnimation(bounce);
+                    if (!opponentExecuteAttack(opponent.getAttacks()[rand.nextInt(NUM_TYPES)], player)) {
+                        return;
+                    }
                     finish(player, opponent);
                 });
                 two.setOnClickListener(v -> {
-                    two.startAnimation(button);
+                    if (!executeAttack(player.getAttacks()[1], opponent)) {
+                        return;
+                    }
                     playerImage.startAnimation(slide);
                     oppImage.startAnimation(bounce);
-                    executeAttack(player.getAttacks()[1], opponent);
                     finish(player, opponent);
-                    opponentExecuteAttack(opponent.getAttacks()[rand.nextInt(NUM_TYPES)], player);
+                    oppImage.startAnimation(reverse);
+                    playerImage.startAnimation(bounce);
+                    if (!opponentExecuteAttack(opponent.getAttacks()[rand.nextInt(NUM_TYPES)], player)) {
+                        return;
+                    }
                     finish(player, opponent);
                 });
                 three.setOnClickListener(v -> {
-                    three.startAnimation(button);
                     playerImage.startAnimation(slide);
                     oppImage.startAnimation(bounce);
-                    executeAttack(player.getAttacks()[2], opponent);
+                    if (!executeAttack(player.getAttacks()[2], opponent)) {
+                        return;
+                    }
                     finish(player, opponent);
-                    opponentExecuteAttack(opponent.getAttacks()[rand.nextInt(NUM_TYPES)], player);
+                    oppImage.startAnimation(reverse);
+                    playerImage.startAnimation(bounce);
+                    if (!opponentExecuteAttack(opponent.getAttacks()[rand.nextInt(NUM_TYPES)], player)) {
+                        return;
+                    }
                     finish(player, opponent);
                 });
                 four.setOnClickListener(v -> {
-                    four.startAnimation(button);
                     playerImage.startAnimation(slide);
                     oppImage.startAnimation(bounce);
-                    executeAttack(player.getAttacks()[NUM_TYPES - 1], opponent);
+                    if (!executeAttack(player.getAttacks()[NUM_TYPES - 1], opponent)) {
+                        return;
+                    }
                     finish(player, opponent);
-                    opponentExecuteAttack(opponent.getAttacks()[rand.nextInt(NUM_TYPES)], player);
+                    oppImage.startAnimation(reverse);
+                    playerImage.startAnimation(bounce);
+                    if (!opponentExecuteAttack(opponent.getAttacks()[rand.nextInt(NUM_TYPES)], player)) {
+                        return;
+                    }
                     finish(player, opponent);
                 });
             } catch (NullPointerException e) {
@@ -227,43 +197,6 @@ public final class MainActivity extends AppCompatActivity {
             }
         });
     }
-/*
-    /**
-     * Speech to Text Button.
-     * @param v on click view
-     *
-    public void onSpeechButtonClicked(final View v) {
-        TextView txt = (TextView) this.findViewById(R.id.textView); // 'hello' is the ID of your text view
-
-        try {
-            SpeechConfig config = SpeechConfig.fromSubscription(speechSubscriptionKey, serviceRegion);
-            assert(config != null);
-
-            SpeechRecognizer reco = new SpeechRecognizer(config);
-            assert(reco != null);
-
-            Future<SpeechRecognitionResult> task = reco.recognizeOnceAsync();
-            assert(task != null);
-
-            // Note: this will block the UI thread, so eventually, you want to
-            //        register for the event (see full samples)
-            SpeechRecognitionResult result = task.get();
-            assert(result != null);
-
-            if (result.getReason() == ResultReason.RecognizedSpeech) {
-                txt.setText(result.toString());
-            }
-            else {
-                txt.setText("Error recognizing. Did you update the subscription info?"
-                + System.lineSeparator() + result.toString());
-            }
-
-            reco.close();
-        } catch (Exception ex) {
-            Log.e("SpeechSDKDemo", "unexpected " + ex.getMessage());
-            assert(false);
-        }
-    }*/
 
     /**
      * finish off the program.
@@ -340,26 +273,21 @@ public final class MainActivity extends AppCompatActivity {
      * @param current attack chosen by player
      * @param opponent player receiving attack
      */
-    public void executeAttack(final Attack current, final Bender opponent) {
+    public boolean executeAttack(final Attack current, final Bender opponent) {
         String no = "You can't choose the same attack twice in a row.";
         TextView display = findViewById(R.id.log);
         if (current.equals(lastAttackA)) {
             display.setText(no);
-            return;
+            return false;
         }
         String whatIsHappening = "You used " + current.getName() + "!";
         display.setText(whatIsHappening);
-        try {
-            Thread.sleep(TIME);
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-        }
         String oof = "The opponent's last attack was a defensive move! This attack did no damage!";
         if (lastAttack != null && lastAttack.getType().equals("def")) {
             display.setText(oof);
             lastAttackA = current;
             lastAttack = current;
-            return;
+            return true;
         }
         String superEffective = "Your " + current.getName() + " was super effective!";
         if (current.getOpp() != null && current.getOpp().equals(opponent.getType())) {
@@ -370,7 +298,7 @@ public final class MainActivity extends AppCompatActivity {
             oppHealth.setText(oH);
             lastAttackA = current;
             lastAttack = current;
-            return;
+            return true;
         }
         opponent.setHealth(opponent.getHealth() - current.getDamage());
         TextView oppHealth = findViewById(R.id.oppHealth);
@@ -378,6 +306,7 @@ public final class MainActivity extends AppCompatActivity {
         oppHealth.setText(oH);
         lastAttackA = current;
         lastAttack = current;
+        return true;
     }
 
     /**
@@ -385,24 +314,19 @@ public final class MainActivity extends AppCompatActivity {
      * @param current attack chosen by player
      * @param opponent player receiving attack
      */
-    public void opponentExecuteAttack(final Attack current, final Bender opponent) {
+    public boolean opponentExecuteAttack(final Attack current, final Bender opponent) {
         if (current.equals(lastAttackB)) {
-            return;
+            return false;
         }
         TextView oppDisplay = findViewById(R.id.oppLog);
         String whatIsHappening = "The opponent used " + current.getName() + "!";
         oppDisplay.setText(whatIsHappening);
-        try {
-            Thread.sleep(TIME);
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-        }
         String oof = "Your last attack was a defensive move! The opponent's attack did no damage!";
         if (lastAttack != null && lastAttack.getType().equals("def")) {
             oppDisplay.setText(oof);
             lastAttackB = current;
             lastAttack = current;
-            return;
+            return true;
         }
         String superEffective = "The opponent's " + current.getName() + " was super effective!";
         if (current.getOpp() != null && current.getOpp().equals(opponent.getType())) {
@@ -413,7 +337,7 @@ public final class MainActivity extends AppCompatActivity {
             health.setText(pH);
             lastAttackB = current;
             lastAttack = current;
-            return;
+            return true;
         }
         opponent.setHealth(opponent.getHealth() - current.getDamage());
         TextView health = findViewById(R.id.health);
@@ -421,6 +345,7 @@ public final class MainActivity extends AppCompatActivity {
         health.setText(pH);
         lastAttackB = current;
         lastAttack = current;
+        return true;
     }
 
     /*/**

@@ -106,7 +106,7 @@
             <Button
                 android:id="@+id/attackTwo"
                 android:layout_width="196dp"
-                android:layout_height="41dp"
+                android:layout_height="38dp"
                 android:layout_weight="1"
                 android:foregroundGravity="right"
                 android:gravity="center_horizontal"
@@ -115,7 +115,7 @@
             <Button
                 android:id="@+id/attackThree"
                 android:layout_width="196dp"
-                android:layout_height="34dp"
+                android:layout_height="38dp"
                 android:layout_weight="1"
                 android:foregroundGravity="right"
                 android:gravity="center_horizontal"
