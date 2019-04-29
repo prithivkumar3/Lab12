@@ -207,6 +207,7 @@ public final class MainActivity extends AppCompatActivity {
             TextView display = findViewById(R.id.log);
             String state = "YOU LOSE";
             display.setText(state);
+            finish();
         } else if (opponent.getHealth() <= 0) {
             TextView oppDisplay = findViewById(R.id.oppLog);
             String nothing = "";
@@ -217,6 +218,7 @@ public final class MainActivity extends AppCompatActivity {
             TextView display = findViewById(R.id.log);
             String state = "YOU WIN!";
             display.setText(state);
+            finish();
         }
     }
 
