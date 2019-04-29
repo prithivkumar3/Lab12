@@ -135,14 +135,15 @@ public final class MainActivity extends AppCompatActivity {
                 oppHealth.setText(oH);
                 Animation slide = AnimationUtils.loadAnimation(MainActivity.this, R.anim.lefttoright);
                 Animation bounce = AnimationUtils.loadAnimation(MainActivity.this, R.anim.bounce);
-                Animation reverse = AnimationUtils.loadAnimation(MainActivity.this, R.anim.righttoleft);
                 one.setOnClickListener(v -> {
                     playerImage.startAnimation(slide);
                     oppImage.startAnimation(bounce);
                     if (!executeAttack(player.getAttacks()[0], opponent)) {
                         return;
                     }
-                    finish(player, opponent);
+                    if (finish(player, opponent)) {
+                        return;
+                    }
                     if (!opponentExecuteAttack(opponent.getAttacks()[rand.nextInt(NUM_TYPES)], player)) {
                         return;
                     }
@@ -154,7 +155,9 @@ public final class MainActivity extends AppCompatActivity {
                     }
                     playerImage.startAnimation(slide);
                     oppImage.startAnimation(bounce);
-                    finish(player, opponent);
+                    if (finish(player, opponent)) {
+                        return;
+                    }
                     if (!opponentExecuteAttack(opponent.getAttacks()[rand.nextInt(NUM_TYPES)], player)) {
                         return;
                     }
@@ -166,7 +169,9 @@ public final class MainActivity extends AppCompatActivity {
                     if (!executeAttack(player.getAttacks()[2], opponent)) {
                         return;
                     }
-                    finish(player, opponent);
+                    if (finish(player, opponent)) {
+                        return;
+                    }
                     if (!opponentExecuteAttack(opponent.getAttacks()[rand.nextInt(NUM_TYPES)], player)) {
                         return;
                     }
@@ -178,7 +183,9 @@ public final class MainActivity extends AppCompatActivity {
                     if (!executeAttack(player.getAttacks()[NUM_TYPES - 1], opponent)) {
                         return;
                     }
-                    finish(player, opponent);
+                    if (finish(player, opponent)) {
+                        return;
+                    }
                     if (!opponentExecuteAttack(opponent.getAttacks()[rand.nextInt(NUM_TYPES)], player)) {
                         return;
                     }
@@ -195,8 +202,9 @@ public final class MainActivity extends AppCompatActivity {
      * finish off the program.
      * @param player player
      * @param opponent opponent
+     * @return true or false
      */
-    public void finish(final Bender player, final Bender opponent) {
+    public boolean finish(final Bender player, final Bender opponent) {
         if (player.getHealth() <= 0) {
             TextView oppDisplay = findViewById(R.id.oppLog);
             String nothing = "";
@@ -207,7 +215,7 @@ public final class MainActivity extends AppCompatActivity {
             TextView display = findViewById(R.id.log);
             String state = "YOU LOSE";
             display.setText(state);
-            finish();
+            return true;
         } else if (opponent.getHealth() <= 0) {
             TextView oppDisplay = findViewById(R.id.oppLog);
             String nothing = "";
@@ -218,8 +226,9 @@ public final class MainActivity extends AppCompatActivity {
             TextView display = findViewById(R.id.log);
             String state = "YOU WIN!";
             display.setText(state);
-            finish();
+            return true;
         }
+        return false;
     }
 
     /**
