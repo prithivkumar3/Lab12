@@ -272,6 +272,7 @@ public final class MainActivity extends AppCompatActivity {
      * execute a chosen attack.
      * @param current attack chosen by player
      * @param opponent player receiving attack
+     * @return true or false
      */
     public boolean executeAttack(final Attack current, final Bender opponent) {
         String no = "You can't choose the same attack twice in a row.";
@@ -313,6 +314,7 @@ public final class MainActivity extends AppCompatActivity {
      * execute a chosen attack.
      * @param current attack chosen by player
      * @param opponent player receiving attack
+     * @return true or false
      */
     public boolean opponentExecuteAttack(final Attack current, final Bender opponent) {
         if (current.equals(lastAttackB)) {
