@@ -76,8 +76,8 @@ public final class MainActivity extends AppCompatActivity {
                 Random rand = new Random();
                 Bender opponent = new Bender(types[rand.nextInt(NUM_TYPES)], "Computer");
                 setContentView(R.layout.activity_main);
-                Button restart = findViewById(R.id.restart);
-                restart.setOnClickListener(v -> finish());
+                Button quit = findViewById(R.id.quit);
+                quit.setOnClickListener(v -> finish());
                 TextView display = findViewById(R.id.log), playerName = findViewById(R.id.player);
                 playerName.setText(player.getName());
                 TextView opponentName = findViewById(R.id.opponent);
