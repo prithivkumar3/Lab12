@@ -143,8 +143,6 @@ public final class MainActivity extends AppCompatActivity {
                         return;
                     }
                     finish(player, opponent);
-                    oppImage.startAnimation(reverse);
-                    playerImage.startAnimation(bounce);
                     if (!opponentExecuteAttack(opponent.getAttacks()[rand.nextInt(NUM_TYPES)], player)) {
                         return;
                     }
@@ -157,8 +155,6 @@ public final class MainActivity extends AppCompatActivity {
                     playerImage.startAnimation(slide);
                     oppImage.startAnimation(bounce);
                     finish(player, opponent);
-                    oppImage.startAnimation(reverse);
-                    playerImage.startAnimation(bounce);
                     if (!opponentExecuteAttack(opponent.getAttacks()[rand.nextInt(NUM_TYPES)], player)) {
                         return;
                     }
@@ -171,8 +167,6 @@ public final class MainActivity extends AppCompatActivity {
                         return;
                     }
                     finish(player, opponent);
-                    oppImage.startAnimation(reverse);
-                    playerImage.startAnimation(bounce);
                     if (!opponentExecuteAttack(opponent.getAttacks()[rand.nextInt(NUM_TYPES)], player)) {
                         return;
                     }
@@ -185,8 +179,6 @@ public final class MainActivity extends AppCompatActivity {
                         return;
                     }
                     finish(player, opponent);
-                    oppImage.startAnimation(reverse);
-                    playerImage.startAnimation(bounce);
                     if (!opponentExecuteAttack(opponent.getAttacks()[rand.nextInt(NUM_TYPES)], player)) {
                         return;
                     }
