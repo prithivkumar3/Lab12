@@ -146,8 +146,7 @@ public final class MainActivity extends AppCompatActivity {
                     }
                     boolean a;
                     do {
-                        a = opponentExecuteAttack(opponent.getAttacks()[rand.nextInt(NUM_TYPES)], player);
-                    } while (!a);
+                        a = opponentExecuteAttack(opponent.getAttacks()[rand.nextInt(NUM_TYPES)], player); } while (!a);
                     finish(player, opponent);
                 });
                 two.setOnClickListener(v -> {
@@ -161,8 +160,7 @@ public final class MainActivity extends AppCompatActivity {
                     }
                     boolean a;
                     do {
-                        a = opponentExecuteAttack(opponent.getAttacks()[rand.nextInt(NUM_TYPES)], player);
-                    } while (!a);
+                        a = opponentExecuteAttack(opponent.getAttacks()[rand.nextInt(NUM_TYPES)], player); } while (!a);
                     finish(player, opponent);
                 });
                 three.setOnClickListener(v -> {
@@ -176,8 +174,7 @@ public final class MainActivity extends AppCompatActivity {
                     }
                     boolean a;
                     do {
-                        a = opponentExecuteAttack(opponent.getAttacks()[rand.nextInt(NUM_TYPES)], player);
-                    } while (!a);
+                        a = opponentExecuteAttack(opponent.getAttacks()[rand.nextInt(NUM_TYPES)], player); } while (!a);
                     finish(player, opponent);
                 });
                 four.setOnClickListener(v -> {
@@ -191,8 +188,7 @@ public final class MainActivity extends AppCompatActivity {
                     }
                     boolean a;
                     do {
-                        a = opponentExecuteAttack(opponent.getAttacks()[rand.nextInt(NUM_TYPES)], player);
-                    } while (!a);
+                        a = opponentExecuteAttack(opponent.getAttacks()[rand.nextInt(NUM_TYPES)], player); } while (!a);
                     finish(player, opponent);
                 });
             } catch (NullPointerException e) {
