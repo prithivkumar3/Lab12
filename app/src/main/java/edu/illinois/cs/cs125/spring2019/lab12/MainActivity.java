@@ -144,9 +144,7 @@ public final class MainActivity extends AppCompatActivity {
                     if (finish(player, opponent)) {
                         return;
                     }
-                    if (!opponentExecuteAttack(opponent.getAttacks()[rand.nextInt(NUM_TYPES)], player)) {
-                        return;
-                    }
+                    opponentExecuteAttack(opponent.getAttacks()[rand.nextInt(NUM_TYPES)], player);
                     finish(player, opponent);
                 });
                 two.setOnClickListener(v -> {
@@ -158,9 +156,7 @@ public final class MainActivity extends AppCompatActivity {
                     if (finish(player, opponent)) {
                         return;
                     }
-                    if (!opponentExecuteAttack(opponent.getAttacks()[rand.nextInt(NUM_TYPES)], player)) {
-                        return;
-                    }
+                    opponentExecuteAttack(opponent.getAttacks()[rand.nextInt(NUM_TYPES)], player);
                     finish(player, opponent);
                 });
                 three.setOnClickListener(v -> {
@@ -172,9 +168,7 @@ public final class MainActivity extends AppCompatActivity {
                     if (finish(player, opponent)) {
                         return;
                     }
-                    if (!opponentExecuteAttack(opponent.getAttacks()[rand.nextInt(NUM_TYPES)], player)) {
-                        return;
-                    }
+                    opponentExecuteAttack(opponent.getAttacks()[rand.nextInt(NUM_TYPES)], player);
                     finish(player, opponent);
                 });
                 four.setOnClickListener(v -> {
@@ -186,9 +180,7 @@ public final class MainActivity extends AppCompatActivity {
                     if (finish(player, opponent)) {
                         return;
                     }
-                    if (!opponentExecuteAttack(opponent.getAttacks()[rand.nextInt(NUM_TYPES)], player)) {
-                        return;
-                    }
+                    opponentExecuteAttack(opponent.getAttacks()[rand.nextInt(NUM_TYPES)], player);
                     finish(player, opponent);
                 });
             } catch (NullPointerException e) {
