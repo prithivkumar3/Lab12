@@ -120,7 +120,7 @@ public class Attack {
      */
     public static Attack[] fireAttacks() {
         Attack lightning = new Attack("Lightning", "fire", M, "15 damage, triple damage against waterbenders");
-        Attack fireball = new Attack("Fireball", "fire", S, "10 damage, triple damage against waterbenders");
+        Attack fireball = new Attack("Fireball", "fire", L, "20 damage, huge, consuming fireball");
         Attack kick = new Attack("Kick", "none", M, "15 damage, kick");
         Attack punch = new Attack("Punch", "none", M, "15 damage, punch");
         return new Attack[]{kick, punch, lightning, fireball};
