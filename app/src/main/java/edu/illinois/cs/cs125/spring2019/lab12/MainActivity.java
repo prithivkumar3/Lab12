@@ -138,11 +138,11 @@ public final class MainActivity extends AppCompatActivity {
                 Animation slide = AnimationUtils.loadAnimation(MainActivity.this, R.anim.lefttoright);
                 Animation bounce = AnimationUtils.loadAnimation(MainActivity.this, R.anim.bounce);
                 one.setOnClickListener(v -> {
-                    playerImage.startAnimation(slide);
-                    oppImage.startAnimation(bounce);
                     if (!executeAttack(player.getAttacks()[0], opponent)) {
                         return;
                     }
+                    playerImage.startAnimation(slide);
+                    oppImage.startAnimation(bounce);
                     if (finish(player, opponent)) {
                         return;
                     }
@@ -166,11 +166,11 @@ public final class MainActivity extends AppCompatActivity {
                     finish(player, opponent);
                 });
                 three.setOnClickListener(v -> {
-                    playerImage.startAnimation(slide);
-                    oppImage.startAnimation(bounce);
                     if (!executeAttack(player.getAttacks()[2], opponent)) {
                         return;
                     }
+                    playerImage.startAnimation(slide);
+                    oppImage.startAnimation(bounce);
                     if (finish(player, opponent)) {
                         return;
                     }
@@ -180,11 +180,11 @@ public final class MainActivity extends AppCompatActivity {
                     finish(player, opponent);
                 });
                 four.setOnClickListener(v -> {
-                    playerImage.startAnimation(slide);
-                    oppImage.startAnimation(bounce);
                     if (!executeAttack(player.getAttacks()[NUM_TYPES - 1], opponent)) {
                         return;
                     }
+                    playerImage.startAnimation(slide);
+                    oppImage.startAnimation(bounce);
                     if (finish(player, opponent)) {
                         return;
                     }
