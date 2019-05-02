@@ -241,6 +241,9 @@ public final class MainActivity extends AppCompatActivity {
             infoTwo.setEnabled(false);
             infoThree.setEnabled(false);
             infoFour.setEnabled(false);
+            Animation fade = AnimationUtils.loadAnimation(MainActivity.this, R.anim.fadeout);
+            ImageView playerImage = findViewById(R.id.playerImage);
+            playerImage.startAnimation(fade);
             return true;
         } else if (opponent.getHealth() <= 0) {
             TextView oppDisplay = findViewById(R.id.oppLog);
@@ -268,6 +271,9 @@ public final class MainActivity extends AppCompatActivity {
             infoTwo.setEnabled(false);
             infoThree.setEnabled(false);
             infoFour.setEnabled(false);
+            Animation fade = AnimationUtils.loadAnimation(MainActivity.this, R.anim.fadeout);
+            ImageView oppImage = findViewById(R.id.opponentImage);
+            oppImage.startAnimation(fade);
             return true;
         }
         return false;
