@@ -27,6 +27,9 @@
             android:layout_height="wrap_content"
             android:hint="Enter Name"
             android:textColor="#000000"
+            android:textColorHighlight="#000000"
+            android:textColorHint="#000000"
+            android:textColorLink="#000000"
             android:textSize="24sp" />
 
         <android.support.design.widget.TextInputLayout
@@ -40,6 +43,9 @@
                 android:layout_height="wrap_content"
                 android:hint="air, water, earth, or fire"
                 android:textColor="#000000"
+                android:textColorHighlight="#000000"
+                android:textColorHint="#000000"
+                android:textColorLink="#000000"
                 android:textSize="24sp" />
         </android.support.design.widget.TextInputLayout>
     </android.support.design.widget.TextInputLayout>
