@@ -1,6 +1,7 @@
 package edu.illinois.cs.cs125.spring2019.lab12;
 
 
+import android.app.Activity;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -76,8 +77,10 @@ public final class MainActivity extends AppCompatActivity {
                 Random rand = new Random();
                 Bender opponent = new Bender(types[rand.nextInt(NUM_TYPES)], "Computer");
                 setContentView(R.layout.activity_main);
-                Button quit = findViewById(R.id.quit);
-                quit.setOnClickListener(v -> finish());
+                Button restart = findViewById(R.id.restart);
+                restart.setOnClickListener(v -> {
+                    restartActivity(MainActivity.this);
+                });
                 TextView display = findViewById(R.id.log), playerName = findViewById(R.id.player);
                 playerName.setText(player.getName());
                 TextView opponentName = findViewById(R.id.opponent);
@@ -127,10 +130,9 @@ public final class MainActivity extends AppCompatActivity {
                         display.setText(dis);
                     }
                 });
-                TextView health = findViewById(R.id.health);
+                TextView health = findViewById(R.id.health), oppHealth = findViewById(R.id.oppHealth);
                 String pH = "Health: " + player.getHealth();
                 health.setText(pH);
-                TextView oppHealth = findViewById(R.id.oppHealth);
                 String oH = "Health: " + opponent.getHealth();
                 oppHealth.setText(oH);
                 Animation slide = AnimationUtils.loadAnimation(MainActivity.this, R.anim.lefttoright);
@@ -196,7 +198,15 @@ public final class MainActivity extends AppCompatActivity {
             }
         });
     }
-    //final
+
+    /**
+     * restart the activity.
+     * @param activity the activity to be restarted
+     */
+    public static void restartActivity(final Activity activity) {
+        activity.finish();
+        activity.startActivity(activity.getIntent());
+    }
 
     /**
      * finish off the program.
@@ -223,6 +233,14 @@ public final class MainActivity extends AppCompatActivity {
             two.setEnabled(false);
             three.setEnabled(false);
             four.setEnabled(false);
+            Button infoOne = findViewById(R.id.infoOne);
+            Button infoTwo = findViewById(R.id.infoTwo);
+            Button infoThree = findViewById(R.id.infoThree);
+            Button infoFour = findViewById(R.id.infoFour);
+            infoOne.setEnabled(false);
+            infoTwo.setEnabled(false);
+            infoThree.setEnabled(false);
+            infoFour.setEnabled(false);
             return true;
         } else if (opponent.getHealth() <= 0) {
             TextView oppDisplay = findViewById(R.id.oppLog);
@@ -242,6 +260,14 @@ public final class MainActivity extends AppCompatActivity {
             two.setEnabled(false);
             three.setEnabled(false);
             four.setEnabled(false);
+            Button infoOne = findViewById(R.id.infoOne);
+            Button infoTwo = findViewById(R.id.infoTwo);
+            Button infoThree = findViewById(R.id.infoThree);
+            Button infoFour = findViewById(R.id.infoFour);
+            infoOne.setEnabled(false);
+            infoTwo.setEnabled(false);
+            infoThree.setEnabled(false);
+            infoFour.setEnabled(false);
             return true;
         }
         return false;

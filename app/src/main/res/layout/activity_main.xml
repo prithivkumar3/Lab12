@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#8C4122"
+    android:background="@drawable/parchment"
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".MainActivity">
@@ -220,12 +220,12 @@
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/quit"
+            android:id="@+id/restart"
             android:layout_width="match_parent"
             android:layout_height="63dp"
             android:layout_gravity="bottom"
             android:gravity="center"
-            android:text="QUIT"
+            android:text="RESTART"
             android:textSize="24sp" />
     </LinearLayout>
 
