@@ -214,7 +214,15 @@ public final class MainActivity extends AppCompatActivity {
             health.setText(pH);
             TextView display = findViewById(R.id.log);
             String state = "YOU LOSE";
+            String none = "";
+            oppDisplay.setText(none);
             display.setText(state);
+            Button one = findViewById(R.id.attackOne), two = findViewById(R.id.attackTwo);
+            Button three = findViewById(R.id.attackThree), four = findViewById(R.id.attackFour);
+            one.setEnabled(false);
+            two.setEnabled(false);
+            three.setEnabled(false);
+            four.setEnabled(false);
             return true;
         } else if (opponent.getHealth() <= 0) {
             TextView oppDisplay = findViewById(R.id.oppLog);
@@ -225,7 +233,15 @@ public final class MainActivity extends AppCompatActivity {
             oppHealth.setText(oH);
             TextView display = findViewById(R.id.log);
             String state = "YOU WIN!";
+            String none = "";
+            oppDisplay.setText(none);
             display.setText(state);
+            Button one = findViewById(R.id.attackOne), two = findViewById(R.id.attackTwo);
+            Button three = findViewById(R.id.attackThree), four = findViewById(R.id.attackFour);
+            one.setEnabled(false);
+            two.setEnabled(false);
+            three.setEnabled(false);
+            four.setEnabled(false);
             return true;
         }
         return false;
